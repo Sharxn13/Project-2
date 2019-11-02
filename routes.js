@@ -1,21 +1,32 @@
 module.exports = (app, allModels) => {
 
-
   /*
    *  =========================================
    *  =========================================
    *  =========================================
    *  =========================================
-   *    ALL ROUTES FOR POKEMON CONTROLLER
+   *    ALL ROUTES FOR CONTROLLER
    *  =========================================
    *  =========================================
    *  =========================================
    */
 
   // require the controller
-  const pokemonControllerCallbacks = require('./controllers/pokemon')(allModels);
+  const expenseControllerCallbacks = require('./controllers/expense')(allModels);
+  const statsControllerCallbacks = require('./controllers/stats')(allModels);
 
-  app.get('/pokemons', pokemonControllerCallbacks.index);
-  //app.get('/pokemons/:id', pokemons.getPokemon);
-  app.get('/students',pokemonControllerCallbacks.selectAllStudents);
+  //expense routes
+  app.get('/', expenseControllerCallbacks.expenseIndex);
+  app.get('/expenses/new', expenseControllerCallbacks.expenseNew);
+  app.post('/expenses', expenseControllerCallbacks.expenseCreate);
+  app.get('/expenses/:id',expenseControllerCallbacks.expenseShow);
+  app.get('/expenses/:id/edit', expenseControllerCallbacks.expenseEdit);
+  app.put('/expenses/:id', expenseControllerCallbacks.expenseUpdate);
+  app.delete('/expenses/:id', expenseControllerCallbacks.expenseDelete);
+  app.post('/', expenseControllerCallbacks.expenseSort);
+
+  //statistic routes
+  app.get('/stats/new', statsControllerCallbacks.statsNew);
+  app.post('/stats/create', statsControllerCallbacks.statsCreate);
+
 };

@@ -1,16 +1,8 @@
 /*
  * ===================================================
- * ===================================================
- * ===================================================
- * ===================================================
  * ======             CONFIGURATION          =========
  * ===================================================
- * ===================================================
- * ===================================================
- * ===================================================
  */
-
-
 
 const pg = require('pg');
 const url = require('url');
@@ -33,10 +25,10 @@ if( process.env.DATABASE_URL ){
 
 }else{
   configs = {
-    user: 'akira',
+    user: 'sharon13',
     host: '127.0.0.1',
-    database: 'testdb',
-    port: 5432
+    database: 'expense_db',
+    port: '5432'
   };
 }
 
@@ -47,39 +39,25 @@ pool.on('error', function (err) {
   console.log('idle client error', err.message, err.stack);
 });
 
-
-
 /*
- * ===================================================
- * ===================================================
- * ===================================================
  * ===================================================
  * ======        REQUIRE MODEL FILES         =========
  * ===================================================
- * ===================================================
- * ===================================================
- * ===================================================
  */
 
+const allExpenseModelsFunction = require('./models/expense');
 
-const allPokemonModelsFunction = require('./models/pokemon');
+const expenseModelsObject = allExpenseModelsFunction( pool );
 
-const pokemonModelsObject = allPokemonModelsFunction( pool );
+const allStatsModelsFunction = require('./models/stats');
 
-
+const statsModelsObject = allStatsModelsFunction( pool );
 
 /*
  * ===================================================
- * ===================================================
- * ===================================================
- * ===================================================
  * ======          MODULE EXPORTS            =========
  * ===================================================
- * ===================================================
- * ===================================================
- * ===================================================
  */
-
 
 module.exports = {
   //make queries directly from here
@@ -94,6 +72,6 @@ module.exports = {
    * ADD APP MODELS HERE
    */
 
-  // users: userModelsObject,
-  pokemon: pokemonModelsObject
+  expense: expenseModelsObject,
+  stats: statsModelsObject
 };
