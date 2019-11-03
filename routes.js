@@ -2,12 +2,7 @@ module.exports = (app, allModels) => {
 
   /*
    *  =========================================
-   *  =========================================
-   *  =========================================
-   *  =========================================
-   *    ALL ROUTES FOR CONTROLLER
-   *  =========================================
-   *  =========================================
+   *         ALL ROUTES FOR CONTROLLER
    *  =========================================
    */
 
@@ -18,7 +13,7 @@ module.exports = (app, allModels) => {
   //expense routes
   app.get('/', expenseControllerCallbacks.expenseIndex);
   app.get('/expenses/new', expenseControllerCallbacks.expenseNew);
-  app.post('/expenses', expenseControllerCallbacks.expenseCreate);
+  app.post('/expenses/create', expenseControllerCallbacks.expenseCreate);
   app.get('/expenses/:id',expenseControllerCallbacks.expenseShow);
   app.get('/expenses/:id/edit', expenseControllerCallbacks.expenseEdit);
   app.put('/expenses/:id', expenseControllerCallbacks.expenseUpdate);
