@@ -12,7 +12,7 @@ class New extends React.Component {
         <body>
           <h1>Pick Time Period</h1>
           <div className="card text-white bg-dark mb-3">
-            <form action="/statistics/create" method="POST">
+            <form action="/stats/create" method="POST">
               <p>Start Date:</p>
               <input type="date" name="start_date" required/><br/><br/>
               <p>End Date:</p>

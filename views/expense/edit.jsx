@@ -11,7 +11,7 @@ class Edit extends React.Component {
         <body>
           <h1>Edit Expense</h1>
           <div className="card text-white bg-dark mb-3">
-            <form action={`/expenses/${this.props.req.params.id}?_method=put`} method="POST">
+            <form action={`/expense/${this.props.req.params.id}?_method=put`} method="POST">
               <p>Category</p>
               <select type="text" name="category" defaultValue={this.props.result[0].category}>
                 <option value="Entertainment">Entertainment</option>

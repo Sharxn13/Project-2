@@ -5,7 +5,7 @@ const moment = require('moment');
 
 class Create extends React.Component {
   render(){
-    const list = this.props.result.map(expense  => {
+     const list = this.props.result.map(expense  => {
      return (
        <div>
         <div className="card text-white bg-dark mb-3">
@@ -14,7 +14,8 @@ class Create extends React.Component {
           <p>Amount: {expense.amount} </p>
           <p>Message: {expense.message}</p>
         </div>
-      </div>
+                <button class='btn btn-dark bx bxs-edit' type="submit"></button>
+          </div>
      );
     })
     return(

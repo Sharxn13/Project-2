@@ -61,8 +61,8 @@ const statsModelsObject = allStatsModelsFunction( pool );
 
 module.exports = {
   //make queries directly from here
-  queryInterface: (text, params, callback) => {
-    return pool.query(text, params, callback);
+  queryInterface: (text, callback) => {
+    return pool.query(text, callback);
   },
 
   // get a reference to end the connection pool at server end

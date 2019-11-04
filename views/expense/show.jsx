@@ -13,10 +13,10 @@ class Show extends React.Component {
             <p>Date: {moment(expense.date).format('ll')} </p>
             <p>Amount: {expense.amount} </p>
             <p>Message: {expense.message}</p>
-            <form action={`/expenses/${expense.id}/edit`} method="GET">
+            <form action={`/expense/${expense.id}/edit`} method="GET">
               <button class='bx bxs-edit' type="submit"></button>
             </form>
-            <form action={`/expenses/${expense.id}?_method=delete`} method="POST">
+            <form action={`/expense/${expense.id}?_method=delete`} method="POST">
               <button class="bx bxs-trash" type="submit"/>
             </form>
           </div>

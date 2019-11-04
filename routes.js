@@ -11,14 +11,21 @@ module.exports = (app, allModels) => {
   const statsControllerCallbacks = require('./controllers/stats')(allModels);
 
   //expense routes
-  app.get('/', expenseControllerCallbacks.expenseIndex);
-  app.get('/expenses/new', expenseControllerCallbacks.expenseNew);
-  app.post('/expenses/create', expenseControllerCallbacks.expenseCreate);
-  app.get('/expenses/:id',expenseControllerCallbacks.expenseShow);
-  app.get('/expenses/:id/edit', expenseControllerCallbacks.expenseEdit);
-  app.put('/expenses/:id', expenseControllerCallbacks.expenseUpdate);
-  app.delete('/expenses/:id', expenseControllerCallbacks.expenseDelete);
-  app.post('/', expenseControllerCallbacks.expenseSort);
+  // app.get('/', expenseControllerCallbacks.expenseIndex);
+  // app.get('/expense/new', expenseControllerCallbacks.expenseNew);
+  // app.post('/expense/create', expenseControllerCallbacks.expenseCreate);
+  // app.get('/expense/:id',expenseControllerCallbacks.expenseShow);
+  // app.get('/expense/:id/edit', expenseControllerCallbacks.expenseEdit);
+  // app.put('/expense/:id', expenseControllerCallbacks.expenseUpdate);
+  // app.delete('/expense:id', expenseControllerCallbacks.expenseDelete);
+
+app.get('/', expenseControllerCallbacks.expenseIndex);
+  app.get('/expense/new', expenseControllerCallbacks.expenseNew);
+  app.post('/expense', expenseControllerCallbacks.expenseCreate);
+  app.get('/expense/:id',expenseControllerCallbacks.expenseShow);
+  app.get('/expense/:id/edit', expenseControllerCallbacks.expenseEdit);
+  app.put('/expense/:id', expenseControllerCallbacks.expenseUpdate);
+  app.delete('/expense/:id', expenseControllerCallbacks.expenseDelete);
 
   //statistic routes
   app.get('/stats/new', statsControllerCallbacks.statsNew);

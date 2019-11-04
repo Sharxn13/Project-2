@@ -9,7 +9,7 @@ class Create extends React.Component {
     let total_expense = this.props.result2.rows[0].sum;
     const list = this.props.result.map (expense => {
       let percent = parseFloat(expense.cat_expense) / parseFloat(total_expense) * 100;
-      data.push({category : expense.category, percent : percent.toFixed(2)})
+      data.push ({category : expense.category, percent : percent.toFixed(2)})
       return (
         <tr>
           <th scope="col">{expense.category}:</th>
@@ -26,7 +26,7 @@ class Create extends React.Component {
           <div className="row col-12 myStat">
             <div className="col-2"></div>
             <div className="card text-white bg-dark mb-3 col-4">
-              <h1>Expenses Summary</h1><br/>
+              <h1>Expense Summary</h1><br/>
               <p>From <b>{moment(this.props.req.body.start_date).format('ll')}</b> to <b>{moment(this.props.req.body.end_date).format('ll')}</b></p>
               <table class="table table-dark mb-3 text-white">
                 {list}

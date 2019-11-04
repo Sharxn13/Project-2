@@ -14,9 +14,9 @@ module.exports = (db) => {
   };
 
   let statsCreateControllerCallback = (req, res) => {
-      db.statistic.statisticByCategory(req, (err, result) => {
+      db.stats.statisticByCategory(req, (err, result) => {
         if (result != null) {
-          db.statistic.statisticTotalExpense(req, (err, result2) => {
+          db.stats.statisticTotalExpense(req, (err, result2) => {
             data = {
               req,
               result,
@@ -43,5 +43,4 @@ module.exports = (db) => {
     statsNew: statsNewControllerCallback,
     statsCreate: statsCreateControllerCallback
   };
-
 }

@@ -10,7 +10,7 @@ class Layout extends React.Component {
             <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.3/css/boxicons.min.css' rel='stylesheet'></link>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-            <title>ExpensePedia</title>
+            <title>Expense Trackerr!</title>
           </head>
           <body>
             {this.props.children}

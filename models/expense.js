@@ -1,32 +1,32 @@
-/**
+/*
  * ===========================================
  * Export model functions as a module
  * ===========================================
  */
 module.exports = (dbPoolInstance) => {
 
-  // `dbPoolInstance` is accessible within this function scope
-  let expenseIndex = (values, callback) => {
-    const queryArray = [values];
-    const queryString = 'SELECT * FROM expenses';
 
-    dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
-      if( error ){
-        // invoke callback function with results after query has executed
-        callback(error, null);
-      }else{
-        // invoke callback function with results after query has executed
-        if( queryResult.rows.length > 0 ){
-          callback(null, queryResult.rows);
-        }else{
-          callback(null, null);
-        }
-      }
-    });
-  };
+  let expenseIndex = (callback) => {
+   const queryString = 'SELECT * FROM expenses';
 
-  let expenseCreate = (v1, v2, callback) => {
-    const queryArray = [v1.category, v1.date, v1.amount, v1.message, v2];
+   dbPoolInstance.query(queryString, (error, queryResult) => {
+     if( error ){
+       // invoke callback function with results after query has executed
+       callback(error, null);
+     }else{
+       // invoke callback function with results after query has executed
+       if( queryResult.rows.length > 0 ){
+         callback(null, queryResult.rows);
+       }
+       else{
+         callback(null, null);
+       }
+     }
+   });
+ };
+
+  let expenseCreate = (v1, callback) => {
+    const queryArray = [v1.category, v1.date, v1.amount, v1.message];
     const queryString = 'INSERT INTO expenses (category, date, amount, message) VALUES ($1, $2, $3, $4) RETURNING *';
 
     dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
@@ -44,11 +44,10 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
-  let expenseShow = (values, callback) => {
-    const queryArray = [values];
-    const queryString = 'SELECT * FROM expenses WHERE id = $1';
 
-    dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
+  let expenseShow = (v1, callback) => {
+    const values = [v1];
+    dbPoolInstance.query('SELECT * FROM expenses WHERE id = $1', values, (error, queryResult) => {
       if( error ){
         // invoke callback function with results after query has executed
         callback(error, null);
@@ -81,6 +80,7 @@ module.exports = (dbPoolInstance) => {
       }
     });
   };
+
 
   let expenseEdit = (values, callback) => {
     const queryArray = [parseInt(values)];
@@ -120,24 +120,7 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
-  let expenseSort = (v1, v2, callback) => {
-    const queryArray = [parseInt(v1)];
-    const queryString = `SELECT * FROM expenses ORDER BY ${v2.sortType} ${v2.sortOrder}`;
 
-    dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
-      if( error ){
-        // invoke callback function with results after query has executed
-        callback(error, null);
-      }else{
-        // invoke callback function with results after query has executed
-        if( queryResult.rows.length > 0 ){
-          callback(null, queryResult.rows);
-        }else{
-          callback(null, null);
-        }
-      }
-    });
-  };
 
   return {
     expenseIndex,
@@ -146,6 +129,5 @@ module.exports = (dbPoolInstance) => {
     expenseDelete,
     expenseEdit,
     expenseUpdate,
-    expenseSort
   };
 };

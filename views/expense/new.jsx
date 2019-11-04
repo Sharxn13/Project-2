@@ -11,7 +11,7 @@ class New extends React.Component {
         <body>
             <h1>What are you spending on today?</h1>
           <div className = "card text-white bg-dark mb-3">
-            <form action={`/expenses`} method="POST">
+            <form action={`/expense`} method="POST">
               <p>Category</p>
               <select type="text" name="category">
                 <option value="Entertainment">Entertainment</option>
