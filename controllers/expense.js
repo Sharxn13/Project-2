@@ -3,7 +3,6 @@ module.exports = (db) => {
  let expenseIndexControllerCallback = (req, res) => {
      db.expense.expenseIndex((err, result) => {
        data = {
-         req,
          result:result
        }
        if (result != null) {
@@ -28,7 +27,6 @@ module.exports = (db) => {
  let expenseCreateControllerCallback = (req, res) => {
       db.expense.expenseCreate(req.body,(err, result) => {
         data = {
-          req,
           result
         }
         res.render('expense/create', data);
@@ -39,8 +37,7 @@ module.exports = (db) => {
   let expenseShowControllerCallback = (req, res) => {
       db.expense.expenseShow(req.params.id, (err, result) => {
         data = {
-          req,
-          result: result
+          result
         }
         console.log("req",req.params.id);
         console.log("show controller!", result);
@@ -60,7 +57,6 @@ module.exports = (db) => {
   let expenseEditControllerCallback = (req, res) => {
       db.expense.expenseEdit(req.params.id, (err, result) => {
         data = {
-          req,
           result
         };
         res.render('expense/edit', data);
@@ -70,7 +66,6 @@ module.exports = (db) => {
   let expenseUpdateControllerCallback = (req, res) => {
       db.expense.expenseUpdate(req.body, req.params.id, (err, result) => {
         data = {
-          req,
           result
         };
         res.render('expense/update', data);

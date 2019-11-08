@@ -17,7 +17,6 @@ class New extends React.Component {
                 <option value="Entertainment">Entertainment</option>
                 <option value="Transport">Transport</option>
                 <option value="Food">Food</option>
-                <option value="Hello">Hello</option>
                 <option value="Drinks">Drinks</option>
                 <option value="Ultilities">Ultitilies</option>
                 <option value="Clothes">Clothes</option>

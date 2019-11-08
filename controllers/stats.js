@@ -14,10 +14,14 @@ module.exports = (db) => {
       db.stats.statisticByCategory(req, (err, result) => {
         if (result != null) {
           db.stats.statisticTotalExpense(req, (err, result2) => {
-            res.render('stats/create');
+            data = {
+                result,
+                result2
+            }
+            res.render('stats/create', data);
          });
         } else {
-          res.render('errors/time-period');
+          res.render('errors/time-period', data);
         }
       });
   };
