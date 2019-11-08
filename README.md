@@ -11,12 +11,12 @@ This app aims to ease user from the trouble of keeping track of expenses over a 
 6. Bootstrap 4
 7. mockflow.com - wireframe
 
-#Approach
+# Approach
 I started by listing down the needs/goals as well as frustrations and challenges commonly faced by people. That helped me to narrow down the number of tables I need as well as the functionality of it. This also helps to provide me with the details I would include in my navigation bar which would help to show what form is needed to be rendered for each page.
 
 I have sectioned my codes into different parts, for example; Create, Update, Delete and Edit. This would help me to locate and trace back the routes.
 
-#Installation Instructions
+# Installation Instructions
 
 1. Install all the depencies of the project:
 npm install
@@ -41,8 +41,8 @@ psql -d expense_db -U USERNAME -f tables.sql
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
 
-#Unsolved Problems:
+# Unsolved Problems:
 Unable to show total amount within a period of time in the Stats page.
 
-#Problem Statement:
+# Problem Statement:
 "Sometimes we got to use outside sources to help us save up for our future."
