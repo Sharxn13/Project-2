@@ -1,4 +1,5 @@
 module.exports = (db) => {
+
  let expenseIndexControllerCallback = (req, res) => {
      db.expense.expenseIndex((err, result) => {
        data = {

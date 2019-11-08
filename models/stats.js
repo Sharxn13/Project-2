@@ -8,8 +8,8 @@ module.exports = (dbPoolInstance) => {
   // `dbPoolInstance` is accessible within this function scope
 
   let statisticByCategory = (values, callback) => {
-    const queryArray =[values.body.start_date, values.body.end_date];
-    const queryString = 'SELECT category, sum(amount) AS cat_expense FROM expenses WHERE expenses_date BETWEEN $2 AND $3 GROUP BY category';
+    const queryArray =[values.body.id, values.body.start_date, values.body.end_date];
+    const queryString = 'SELECT category, sum(amount) AS cat_expense FROM expenses WHERE id = $1 AND date BETWEEN $2 AND $3 GROUP BY category';
 
     dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
       if( error ){
@@ -27,8 +27,8 @@ module.exports = (dbPoolInstance) => {
   };
 
    let statisticTotalExpense = (values, callback) => {
-    const queryArray = [values.body.start_date, values.body.end_date];
-    const queryString = 'SELECT sum(total_expense.cat_expense) FROM (SELECT category, sum(amount) AS cat_expense FROM expenses WHERE expenses_date BETWEEN $2 AND $3 GROUP BY category) AS total_expense';
+    const queryArray = [values.body.id, values.body.start_date, values.body.end_date];
+    const queryString = 'SELECT sum(total_expense.cat_expense) FROM expenses (SELECT category, sum(amount) AS cat_expense FROM expenses  WHERE id = $1 AND date BETWEEN $2 AND $3 GROUP BY category) AS total_expense';
     dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
       if( error ){
         // invoke callback function with results after query has executed
@@ -40,7 +40,7 @@ module.exports = (dbPoolInstance) => {
         }else{
           callback(null, null);
         }
-      }
+      }``
     });
   };
 

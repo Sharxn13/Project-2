@@ -7,9 +7,6 @@ module.exports = (db) => {
    */
 
   let statsNewControllerCallback = (req, res) => {
-      data = {
-        req
-      }
       res.render('stats/new', data);
   };
 
@@ -17,18 +14,10 @@ module.exports = (db) => {
       db.stats.statisticByCategory(req, (err, result) => {
         if (result != null) {
           db.stats.statisticTotalExpense(req, (err, result2) => {
-            data = {
-              req,
-              result,
-              result2
-            }
-            res.render('stats/create', data);
+            res.render('stats/create');
          });
         } else {
-          data = {
-            req
-          }
-          res.render('errors/time-period', data);
+          res.render('errors/time-period');
         }
       });
   };

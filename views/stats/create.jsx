@@ -36,12 +36,7 @@ class Create extends React.Component {
                 </tr>
               </table>
             </div>
-            <div id="chartContainer" className="col-5">
-              <canvas id="myChart"  width="600" height="600"></canvas>
-            </div>
-          </div>
-          <script dangerouslySetInnerHTML={ {__html: `let cData = ${data}`}}/>
-          <script src="/script.js"></script>
+           </div>
         </body>
       </Layout>
     )

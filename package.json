@@ -29,5 +29,6 @@
   "bugs": {
     "url": "https://github.com/Sharxn13/mvc-template/issues"
   },
-  "homepage": "https://github.com/Sharxn13/mvc-template#readme"
+  "homepage": "https://github.com/Sharxn13/mvc-template#readme",
+  "devDependencies": {}
 }
