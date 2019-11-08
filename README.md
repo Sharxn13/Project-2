@@ -19,15 +19,19 @@ I have sectioned my codes into different parts, for example; Create, Update, Del
 # Installation Instructions
 
 1. Install all the depencies of the project:
+
 npm install
 
 2. Create the Postgres db for running on local:
+
 createdb expense_db -U USERNAME
 
 3. Create the tables neccessary to run this project:
+
 psql -d expense_db -U USERNAME -f tables.sql
 
 4. Use NodeJS and the following dependencies:
+
 
     "bootstrap": "^4.3.1",
     "cookie-parser": "^1.4.4",
@@ -40,9 +44,12 @@ psql -d expense_db -U USERNAME -f tables.sql
     "pg": "^7.12.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
+    
 
 # Unsolved Problems:
+
 Unable to show total amount within a period of time in the Stats page.
 
 # Problem Statement:
+
 "Sometimes we got to use outside sources to help us save up for our future."
